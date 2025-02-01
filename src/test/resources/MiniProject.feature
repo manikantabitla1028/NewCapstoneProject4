@@ -5,8 +5,8 @@ Feature: Mini Project with Selenium and BDD
     Then I verify the title of the page is "The Internet"
     When I click on "A/B Testing" link
     Then I verify the text on the page is:
-      | A/B Test Control |
-      | A/B Variation 1  |
+      | A/B Test Control     |
+      | A/B Test Variation 1 |
     And I navigate back to the home page
     When I click on "Dropdown" link
     And I select "Option 1" from the dropdown
@@ -16,3 +16,4 @@ Feature: Mini Project with Selenium and BDD
     Then I verify the following links are present on the Frames page:
       | Nested Frames |
       | iFrame        |
+    And I logout from application

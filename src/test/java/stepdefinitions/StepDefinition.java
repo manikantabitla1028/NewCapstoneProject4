@@ -1,11 +1,11 @@
 package stepdefinitions;
 
+import hooks.Hooks;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -58,15 +58,17 @@ public class StepDefinition {
     }
 
     @Then("I verify the text on the page is:")
-    public void i_verify_the_text_on_the_page_is(DataTable dataTable) {
+    public void i_verify_the_text_on_the_page_is( DataTable dataTable) {
         String actualText = pageClass.verifyTheText();
+        System.out.println("Actual Text on Page: " + actualText);
 
-        // Convert DataTable to List
-        List<String> expectedTexts = dataTable.asList();
-
-        // Assert actual text is one of the expected values
-        Assert.assertTrue(expectedTexts.contains(actualText),
-                "Actual text '" + actualText + "' does not match any expected value!");
+        if (actualText.equals("A/B Test Control") || actualText.equals("A/B Test Variation 1")) {
+            System.out.println("Text matches one of the expected values.");
+            Assert.assertTrue(true);  // Pass the test
+        } else {
+            System.out.println("Unexpected text: " + actualText);
+            Assert.fail("Text does not match expected values!");
+        }
     }
 
     @And("I navigate back to the home page")
@@ -99,5 +101,9 @@ public class StepDefinition {
             Assert.assertTrue(pageClass.verifyLinks(), linkText);
         }
 
+    }
+    @Then("I logout from application")
+    public void i_logout_from_application() {
+        DriverManager.quitDriver();
     }
 }

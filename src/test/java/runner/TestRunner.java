@@ -14,7 +14,8 @@ import org.junit.runner.RunWith;
                 "html:target/cucumber-reports.html", // Generate HTML report
                 "json:target/cucumber-reports.json"  // Generate JSON report
         },
-        monochrome = true                    // Better console output readability
+        monochrome = true,
+        dryRun=false
 
 )
 public class TestRunner {

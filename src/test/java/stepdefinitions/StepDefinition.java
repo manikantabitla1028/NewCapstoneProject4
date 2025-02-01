@@ -1,6 +1,6 @@
 package stepdefinitions;
 
-import hooks.Hooks;
+
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -13,7 +13,6 @@ import org.testng.Assert;
 import pages.PageClass;
 import utils.DriverManager;
 
-import java.util.List;
 
 
 public class StepDefinition {
@@ -40,25 +39,17 @@ public class StepDefinition {
 
     @When("I click on {string} link")
     public void i_click_on_link(String xpath) {
-        switch(xpath) {
-            case "A/B Testing":
-
-                pageClass.clickOnABTestingLink();
-                break;
-            case "Dropdown":
-
-                pageClass.clickOnDropdown();
-                break;
-            case "Frames":
-                pageClass.clickOnFrames();
-
+        switch (xpath) {
+            case "A/B Testing" -> pageClass.clickOnABTestingLink();
+            case "Dropdown" -> pageClass.clickOnDropdown();
+            case "Frames" -> pageClass.clickOnFrames();
         }
 
 
     }
 
     @Then("I verify the text on the page is:")
-    public void i_verify_the_text_on_the_page_is( DataTable dataTable) {
+    public void i_verify_the_text_on_the_page_is() {
         String actualText = pageClass.verifyTheText();
         System.out.println("Actual Text on Page: " + actualText);
 
@@ -81,7 +72,7 @@ public class StepDefinition {
     @And("I select {string} from the dropdown")
     public void i_select_from_the_dropdown(String selectOption) {
 
-        WebElement option = driver.findElement(pageClass.DROPDOWNSELECTION);
+        WebElement option = driver.findElement(PageClass.DROPDOWNSELECTION);
         Select select = new Select(option);
         select.selectByVisibleText(selectOption);
 

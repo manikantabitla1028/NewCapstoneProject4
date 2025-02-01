@@ -3,7 +3,6 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import java.security.PublicKey;
 
 public class PageClass {
     public  WebDriver driver;
@@ -11,13 +10,13 @@ public class PageClass {
         this.driver=driver;
     }
 
-    private  By ABTESTINGLINK = By.xpath("//a[contains(text(),'A/B Testing')]");
-    private  By DROPDOWN = By.xpath("//a[contains(text(), 'Dropdown')]");
-    private  By FRAMES = By.xpath("//*[@href='/frames']");
-    private  By ABTESTCONTROL = By.xpath("//h3");
+    private final By ABTESTINGLINK = By.xpath("//a[contains(text(),'A/B Testing')]");
+    private final By DROPDOWN = By.xpath("//a[contains(text(), 'Dropdown')]");
+    private final By FRAMES = By.xpath("//*[@href='/frames']");
+    private final By ABTESTCONTROL = By.xpath("//h3");
 
     public static By DROPDOWNSELECTION = By.xpath("//*[@id='dropdown']");
-    private  By LINKTEXT = By.xpath("//div[@class='example']//li//a");
+    private final By LINKTEXT = By.xpath("//div[@class='example']//li//a");
 
 
 

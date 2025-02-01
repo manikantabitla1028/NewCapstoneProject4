@@ -2,7 +2,6 @@ package hooks;
 
 
 import io.cucumber.java.After;
-import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
 import utils.DriverManager;
 
@@ -12,7 +11,7 @@ public class Hooks {
     public void setUp(){
         DriverManager.getDriver();
     }
-    @AfterAll
+    @After
     public void tearDown(){
         DriverManager.quitDriver();
 

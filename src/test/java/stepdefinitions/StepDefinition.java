@@ -24,7 +24,6 @@ public class StepDefinition {
         this.pageClass = new PageClass(driver);
 
     }
-    //WebDriver driver = DriverManager.getDriver();
 
     @Given("I launch the application {string}")
     public void i_launch_the_application(String url) {
@@ -43,15 +42,14 @@ public class StepDefinition {
     public void i_click_on_link(String xpath) {
         switch(xpath) {
             case "A/B Testing":
-                //driver.findElement(By.xpath("//a[contains(text(),'A/B Testing')]")).click();
+
                 pageClass.clickOnABTestingLink();
                 break;
             case "Dropdown":
-                //driver.findElement(By.xpath("//a[contains(text(), 'Dropdown')]")).click();
+
                 pageClass.clickOnDropdown();
                 break;
             case "Frames":
-                //driver.findElement(By.xpath("//*[@href='/frames']")).click();
                 pageClass.clickOnFrames();
 
         }

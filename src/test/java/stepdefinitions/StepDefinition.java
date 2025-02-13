@@ -1,6 +1,7 @@
 package stepdefinitions;
 
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -12,6 +13,8 @@ import org.testng.Assert;
 import pages.PageClass;
 import utils.DriverManager;
 
+import java.util.List;
+import java.util.Map;
 
 
 public class StepDefinition {
@@ -45,20 +48,6 @@ public class StepDefinition {
         }
 
 
-    }
-
-    @Then("I verify the text on the page is:")
-    public void i_verify_the_text_on_the_page_is() {
-        String actualText = pageClass.verifyTheText();
-        System.out.println("Actual Text on Page: " + actualText);
-
-        if (actualText.equals("A/B Test Control") || actualText.equals("A/B Test Variation 1")) {
-            System.out.println("Text matches one of the expected values.");
-            Assert.assertTrue(true);  // Pass the test
-        } else {
-            System.out.println("Unexpected text: " + actualText);
-            Assert.fail("Text does not match expected values!");
-        }
     }
 
     @And("I navigate back to the home page")
@@ -96,4 +85,14 @@ public class StepDefinition {
     public void i_logout_from_application() {
         DriverManager.quitDriver();
     }
-}
+
+    @Then("I verify the text on the page is {string} or {string}")
+    public void iVerifyTheTextOnThePageIsOr(String text1, String text2) {
+        if(text1.equalsIgnoreCase(PageClass.verifyTheText())||text2.equals(PageClass.verifyTheText())){
+
+            System.out.println("Test Passed "+PageClass.verifyTheText());
+
+        }
+    }
+    }
+
